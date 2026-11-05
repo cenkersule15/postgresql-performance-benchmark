@@ -1,0 +1,60 @@
+Round 1 | Order AB | Condition A
+Timing is on.
+COPY 100000
+Time: 213.980 ms
+Round 1 | Order AB | Condition B
+Timing is on.
+COPY 100000
+Time: 830.925 ms
+Round 2 | Order BA | Condition B
+Timing is on.
+COPY 100000
+Time: 473.743 ms
+Round 2 | Order BA | Condition A
+Timing is on.
+COPY 100000
+Time: 202.670 ms
+Round 3 | Order AB | Condition A
+Timing is on.
+COPY 100000
+Time: 192.820 ms
+Round 3 | Order AB | Condition B
+Timing is on.
+COPY 100000
+Time: 475.926 ms
+Round 4 | Order BA | Condition B
+Timing is on.
+COPY 100000
+Time: 315.061 ms
+Round 4 | Order BA | Condition A
+Timing is on.
+COPY 100000
+Time: 133.752 ms
+Round 5 | Order AB | Condition A
+Timing is on.
+COPY 100000
+Time: 124.535 ms
+Round 5 | Order AB | Condition B
+Timing is on.
+COPY 100000
+Time: 318.984 ms
+
+=== All 10 imports completed ===
+round,order,condition,table_name,import_ms,row_count
+1,AB,A,events_insert_no_extra_idx,213.980,100000
+1,AB,B,events_insert_with_extra_idx,830.925,100000
+2,BA,B,events_insert_with_extra_idx,473.743,100000
+2,BA,A,events_insert_no_extra_idx,202.670,100000
+3,AB,A,events_insert_no_extra_idx,192.820,100000
+3,AB,B,events_insert_with_extra_idx,475.926,100000
+4,BA,B,events_insert_with_extra_idx,315.061,100000
+4,BA,A,events_insert_no_extra_idx,133.752,100000
+5,AB,A,events_insert_no_extra_idx,124.535,100000
+5,AB,B,events_insert_with_extra_idx,318.984,100000
+
+=== Main table verification ===
+ main_events_count 
+-------------------
+           1000000
+(1 row)
+

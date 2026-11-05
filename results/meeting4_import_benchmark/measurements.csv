@@ -1,0 +1,11 @@
+round,order,condition,table_name,import_ms,row_count
+1,AB,A,events_insert_no_extra_idx,213.980,100000
+1,AB,B,events_insert_with_extra_idx,830.925,100000
+2,BA,B,events_insert_with_extra_idx,473.743,100000
+2,BA,A,events_insert_no_extra_idx,202.670,100000
+3,AB,A,events_insert_no_extra_idx,192.820,100000
+3,AB,B,events_insert_with_extra_idx,475.926,100000
+4,BA,B,events_insert_with_extra_idx,315.061,100000
+4,BA,A,events_insert_no_extra_idx,133.752,100000
+5,AB,A,events_insert_no_extra_idx,124.535,100000
+5,AB,B,events_insert_with_extra_idx,318.984,100000

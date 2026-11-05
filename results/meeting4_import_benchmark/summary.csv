@@ -1,0 +1,3 @@
+condition,runs,mean_ms,median_ms,min_ms,max_ms,sample_stddev_ms
+A,5,173.551,192.820,124.535,213.980,41.353
+B,5,482.928,473.743,315.061,830.925,209.936

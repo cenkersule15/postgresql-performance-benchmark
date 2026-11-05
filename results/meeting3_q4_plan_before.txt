@@ -1,0 +1,20 @@
+                                                                             QUERY PLAN                                                                             
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ Finalize Aggregate  (cost=17568.31..17568.32 rows=1 width=8) (actual time=35.353..36.788 rows=1 loops=1)
+   Buffers: shared hit=5025 read=5202
+   ->  Gather  (cost=17568.09..17568.30 rows=2 width=8) (actual time=35.265..36.784 rows=3 loops=1)
+         Workers Planned: 2
+         Workers Launched: 2
+         Buffers: shared hit=5025 read=5202
+         ->  Partial Aggregate  (cost=16568.09..16568.10 rows=1 width=8) (actual time=32.959..32.960 rows=1 loops=3)
+               Buffers: shared hit=5025 read=5202
+               ->  Parallel Seq Scan on events  (cost=0.00..16477.00 rows=36437 width=0) (actual time=0.043..31.609 rows=28238 loops=3)
+                     Filter: ((event_ts >= '2025-03-01 01:00:00+01'::timestamp with time zone) AND (event_ts < '2025-04-01 02:00:00+02'::timestamp with time zone))
+                     Rows Removed by Filter: 305095
+                     Buffers: shared hit=5025 read=5202
+ Planning:
+   Buffers: shared hit=66
+ Planning Time: 0.339 ms
+ Execution Time: 36.828 ms
+(16 rows)
+

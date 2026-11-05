@@ -1,0 +1,14 @@
+                                                                         QUERY PLAN                                                                         
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+ Aggregate  (cost=2700.03..2700.04 rows=1 width=8) (actual time=11.078..11.079 rows=1 loops=1)
+   Buffers: shared hit=1 read=179
+   ->  Index Only Scan using idx_events_event_ts on events  (cost=0.42..2481.41 rows=87449 width=0) (actual time=0.123..7.298 rows=84715 loops=1)
+         Index Cond: ((event_ts >= '2025-03-01 01:00:00+01'::timestamp with time zone) AND (event_ts < '2025-04-01 02:00:00+02'::timestamp with time zone))
+         Heap Fetches: 0
+         Buffers: shared hit=1 read=179
+ Planning:
+   Buffers: shared hit=117 read=1 dirtied=2
+ Planning Time: 0.698 ms
+ Execution Time: 11.132 ms
+(10 rows)
+

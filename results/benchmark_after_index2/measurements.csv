@@ -1,0 +1,5 @@
+workload,phase,run,time_ms
+Q4,warmup,0,8.965
+Q4,measured,1,7.296
+Q4,measured,2,8.172
+Q4,measured,3,5.007

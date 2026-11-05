@@ -1,0 +1,5 @@
+ table_size | total_indexes_size | total_relation_size 
+------------+--------------------+---------------------
+ 80 MB      | 76 MB              | 156 MB
+(1 row)
+

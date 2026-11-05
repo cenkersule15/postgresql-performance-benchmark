@@ -1,0 +1,11 @@
+                                                     QUERY PLAN                                                      
+---------------------------------------------------------------------------------------------------------------------
+ Index Scan using events_pkey on events  (cost=0.42..8.44 rows=1 width=46) (actual time=0.027..0.027 rows=1 loops=1)
+   Index Cond: (event_id = 500000)
+   Buffers: shared hit=7
+ Planning:
+   Buffers: shared hit=127
+ Planning Time: 0.567 ms
+ Execution Time: 0.058 ms
+(7 rows)
+

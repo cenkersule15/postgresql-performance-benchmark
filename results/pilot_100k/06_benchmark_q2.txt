@@ -1,0 +1,7 @@
+Pager usage is off.
+Timing is on.
+Time: 57.213 ms
+Time: 33.217 ms
+Time: 24.805 ms
+Time: 23.613 ms
+Timing is off.

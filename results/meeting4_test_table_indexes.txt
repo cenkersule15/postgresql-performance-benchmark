@@ -1,0 +1,8 @@
+          table_name          |                           index_name                           |                                                                              index_definition                                                                              
+------------------------------+----------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ events_insert_no_extra_idx   | events_insert_no_extra_idx_pkey                                | CREATE UNIQUE INDEX events_insert_no_extra_idx_pkey ON public.events_insert_no_extra_idx USING btree (event_id)
+ events_insert_with_extra_idx | events_insert_with_extra_idx_customer_id_event_ts_event_id_idx | CREATE INDEX events_insert_with_extra_idx_customer_id_event_ts_event_id_idx ON public.events_insert_with_extra_idx USING btree (customer_id, event_ts DESC, event_id DESC)
+ events_insert_with_extra_idx | events_insert_with_extra_idx_event_ts_idx                      | CREATE INDEX events_insert_with_extra_idx_event_ts_idx ON public.events_insert_with_extra_idx USING btree (event_ts)
+ events_insert_with_extra_idx | events_insert_with_extra_idx_pkey                              | CREATE UNIQUE INDEX events_insert_with_extra_idx_pkey ON public.events_insert_with_extra_idx USING btree (event_id)
+(4 rows)
+

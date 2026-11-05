@@ -1,0 +1,32 @@
+ total_events | unique_events | first_id | last_id 
+--------------+---------------+----------+---------
+      1000000 |       1000000 |        1 | 1000000
+(1 row)
+
+ earliest_event_utc  |  latest_event_utc   | null_timestamps 
+---------------------+---------------------+-----------------
+ 2025-01-01 00:00:00 | 2025-12-31 23:59:00 |               0
+(1 row)
+
+  status   | event_count | percentage 
+-----------+-------------+------------
+ cancelled |       49753 |      4.975
+ completed |      849606 |     84.961
+ pending   |      100641 |     10.064
+(3 rows)
+
+ events_outside_2025_utc 
+-------------------------
+                       0
+(1 row)
+
+ null_event_ids | null_timestamps | null_customer_ids | null_product_ids | null_regions | null_quantities | null_prices | null_statuses 
+----------------+-----------------+-------------------+------------------+--------------+-----------------+-------------+---------------
+              0 |               0 |                 0 |                0 |            0 |               0 |           0 |             0
+(1 row)
+
+ invalid_customer_ids | invalid_product_ids | invalid_quantities | prices_outside_generator_range 
+----------------------+---------------------+--------------------+--------------------------------
+                    0 |                   0 |                  0 |                              0
+(1 row)
+

@@ -1,0 +1,5 @@
+workload,phase,run,time_ms
+Q5,warmup,0,2.431
+Q5,measured,1,0.326
+Q5,measured,2,0.207
+Q5,measured,3,0.179

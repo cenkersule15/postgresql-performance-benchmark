@@ -1,0 +1,37 @@
+                                                                         QUERY PLAN                                                                          
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+ Limit  (cost=21560.03..21560.06 rows=10 width=44) (actual time=71.694..71.944 rows=10 loops=1)
+   Buffers: shared hit=4946 read=5298
+   ->  Sort  (cost=21560.03..21565.03 rows=2000 width=44) (actual time=71.693..71.942 rows=10 loops=1)
+         Sort Key: (sum(((quantity)::bigint * unit_price_cents))) DESC, product_id
+         Sort Method: top-N heapsort  Memory: 26kB
+         Buffers: shared hit=4946 read=5298
+         ->  Finalize GroupAggregate  (cost=20985.11..21516.81 rows=2000 width=44) (actual time=70.039..71.771 rows=2000 loops=1)
+               Group Key: product_id
+               Buffers: shared hit=4943 read=5298
+               ->  Gather Merge  (cost=20985.11..21451.81 rows=4000 width=44) (actual time=70.032..70.773 rows=6000 loops=1)
+                     Workers Planned: 2
+                     Workers Launched: 2
+                     Buffers: shared hit=4943 read=5298
+                     ->  Sort  (cost=19985.09..19990.09 rows=2000 width=44) (actual time=65.472..65.521 rows=2000 loops=3)
+                           Sort Key: product_id
+                           Sort Method: quicksort  Memory: 205kB
+                           Buffers: shared hit=4943 read=5298
+                           Worker 0:  Sort Method: quicksort  Memory: 205kB
+                           Worker 1:  Sort Method: quicksort  Memory: 205kB
+                           ->  Partial HashAggregate  (cost=19850.43..19875.43 rows=2000 width=44) (actual time=64.949..65.199 rows=2000 loops=3)
+                                 Group Key: product_id
+                                 Batches: 1  Memory Usage: 625kB
+                                 Buffers: shared hit=4929 read=5298
+                                 Worker 0:  Batches: 1  Memory Usage: 625kB
+                                 Worker 1:  Batches: 1  Memory Usage: 625kB
+                                 ->  Parallel Seq Scan on events  (cost=0.00..15435.33 rows=353208 width=12) (actual time=0.046..32.806 rows=283202 loops=3)
+                                       Filter: (status = 'completed'::text)
+                                       Rows Removed by Filter: 50131
+                                       Buffers: shared hit=4929 read=5298
+ Planning:
+   Buffers: shared hit=124
+ Planning Time: 0.602 ms
+ Execution Time: 72.063 ms
+(33 rows)
+

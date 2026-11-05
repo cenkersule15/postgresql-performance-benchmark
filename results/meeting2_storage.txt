@@ -1,0 +1,5 @@
+ total_rows | table_size | indexes_size | total_size 
+------------+------------+--------------+------------
+    1000000 | 80 MB      | 21 MB        | 101 MB
+(1 row)
+

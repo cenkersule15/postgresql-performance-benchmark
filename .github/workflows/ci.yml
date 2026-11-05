@@ -1,0 +1,20 @@
+name: Reproduction smoke test
+on: [push, pull_request, workflow_dispatch]
+jobs:
+  reproduce:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: bash -n scripts/reproduce.sh scripts/meeting4_import_benchmark.sh
+      - run: bash scripts/reproduce.sh
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: reproduction-results
+          path: results/reproduction/
+      - run: docker compose down
+        if: always()

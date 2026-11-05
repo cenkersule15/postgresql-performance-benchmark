@@ -1,0 +1,6 @@
+dataset_rows,query,run_1_ms,run_2_ms,run_3_ms,median_ms,index_state
+100000,Q1,0.122,0.091,0.068,0.091,primary_key_only
+100000,Q2,33.217,24.805,23.613,24.805,primary_key_only
+100000,Q3,8.107,8.147,8.244,8.147,primary_key_only
+100000,Q4,2.446,2.541,2.443,2.446,primary_key_only
+100000,Q5,2.039,2.093,2.14,2.093,primary_key_only

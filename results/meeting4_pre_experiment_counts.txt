@@ -1,0 +1,7 @@
+          table_name          | row_count 
+------------------------------+-----------
+ events_insert_no_extra_idx   |    100000
+ events_insert_with_extra_idx |    100000
+ events                       |   1000000
+(3 rows)
+

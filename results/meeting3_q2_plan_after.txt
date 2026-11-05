@@ -1,0 +1,19 @@
+                                                         QUERY PLAN                                                          
+-----------------------------------------------------------------------------------------------------------------------------
+ GroupAggregate  (cost=127819.60..148657.22 rows=343021 width=53) (actual time=249.619..328.493 rows=60 loops=1)
+   Group Key: (date_trunc('month'::text, (event_ts AT TIME ZONE 'UTC'::text))), region
+   Buffers: shared hit=5964 read=4269, temp read=4831 written=4852
+   ->  Sort  (cost=127819.60..129938.85 rows=847700 width=21) (actual time=248.242..284.757 rows=849606 loops=1)
+         Sort Key: (date_trunc('month'::text, (event_ts AT TIME ZONE 'UTC'::text))), region
+         Sort Method: external merge  Disk: 28288kB
+         Buffers: shared hit=5964 read=4269, temp read=4831 written=4852
+         ->  Seq Scan on events  (cost=0.00..26965.50 rows=847700 width=21) (actual time=0.191..125.669 rows=849606 loops=1)
+               Filter: (status = 'completed'::text)
+               Rows Removed by Filter: 150394
+               Buffers: shared hit=5958 read=4269
+ Planning:
+   Buffers: shared hit=183
+ Planning Time: 0.779 ms
+ Execution Time: 331.813 ms
+(15 rows)
+

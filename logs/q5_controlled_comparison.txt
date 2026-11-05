@@ -1,0 +1,165 @@
+Pager usage is off.
+=== 100K PILOT: WARM-UP ===
+                                                      QUERY PLAN                                                      
+----------------------------------------------------------------------------------------------------------------------
+ Limit  (cost=2283.01..2283.02 rows=2 width=20) (actual time=9.555..9.559 rows=8 loops=1)
+   Buffers: shared hit=1039
+   ->  Sort  (cost=2283.01..2283.02 rows=2 width=20) (actual time=9.553..9.555 rows=8 loops=1)
+         Sort Key: event_ts DESC, event_id DESC
+         Sort Method: quicksort  Memory: 25kB
+         Buffers: shared hit=1039
+         ->  Seq Scan on events_pilot  (cost=0.00..2283.00 rows=2 width=20) (actual time=2.089..9.523 rows=8 loops=1)
+               Filter: (customer_id = 66808)
+               Rows Removed by Filter: 99992
+               Buffers: shared hit=1033
+ Planning:
+   Buffers: shared hit=84
+ Planning Time: 0.351 ms
+ Execution Time: 9.589 ms
+(14 rows)
+
+=== 100K PILOT: RUN 1 ===
+                                                      QUERY PLAN                                                      
+----------------------------------------------------------------------------------------------------------------------
+ Limit  (cost=2283.01..2283.02 rows=2 width=20) (actual time=9.228..9.230 rows=8 loops=1)
+   Buffers: shared hit=1033
+   ->  Sort  (cost=2283.01..2283.02 rows=2 width=20) (actual time=9.227..9.228 rows=8 loops=1)
+         Sort Key: event_ts DESC, event_id DESC
+         Sort Method: quicksort  Memory: 25kB
+         Buffers: shared hit=1033
+         ->  Seq Scan on events_pilot  (cost=0.00..2283.00 rows=2 width=20) (actual time=2.309..9.219 rows=8 loops=1)
+               Filter: (customer_id = 66808)
+               Rows Removed by Filter: 99992
+               Buffers: shared hit=1033
+ Planning Time: 0.070 ms
+ Execution Time: 9.239 ms
+(12 rows)
+
+=== 100K PILOT: RUN 2 ===
+                                                      QUERY PLAN                                                      
+----------------------------------------------------------------------------------------------------------------------
+ Limit  (cost=2283.01..2283.02 rows=2 width=20) (actual time=7.208..7.210 rows=8 loops=1)
+   Buffers: shared hit=1033
+   ->  Sort  (cost=2283.01..2283.02 rows=2 width=20) (actual time=7.208..7.209 rows=8 loops=1)
+         Sort Key: event_ts DESC, event_id DESC
+         Sort Method: quicksort  Memory: 25kB
+         Buffers: shared hit=1033
+         ->  Seq Scan on events_pilot  (cost=0.00..2283.00 rows=2 width=20) (actual time=1.823..7.200 rows=8 loops=1)
+               Filter: (customer_id = 66808)
+               Rows Removed by Filter: 99992
+               Buffers: shared hit=1033
+ Planning Time: 0.056 ms
+ Execution Time: 7.222 ms
+(12 rows)
+
+=== 100K PILOT: RUN 3 ===
+                                                      QUERY PLAN                                                      
+----------------------------------------------------------------------------------------------------------------------
+ Limit  (cost=2283.01..2283.02 rows=2 width=20) (actual time=3.578..3.579 rows=8 loops=1)
+   Buffers: shared hit=1033
+   ->  Sort  (cost=2283.01..2283.02 rows=2 width=20) (actual time=3.578..3.578 rows=8 loops=1)
+         Sort Key: event_ts DESC, event_id DESC
+         Sort Method: quicksort  Memory: 25kB
+         Buffers: shared hit=1033
+         ->  Seq Scan on events_pilot  (cost=0.00..2283.00 rows=2 width=20) (actual time=0.696..3.576 rows=8 loops=1)
+               Filter: (customer_id = 66808)
+               Rows Removed by Filter: 99992
+               Buffers: shared hit=1033
+ Planning Time: 0.024 ms
+ Execution Time: 3.583 ms
+(12 rows)
+
+=== 1M BASELINE: WARM-UP ===
+                                                                 QUERY PLAN                                                                  
+---------------------------------------------------------------------------------------------------------------------------------------------
+ Limit  (cost=16435.42..16436.58 rows=10 width=20) (actual time=19.909..21.019 rows=14 loops=1)
+   Buffers: shared hit=10317
+   ->  Gather Merge  (cost=16435.42..16436.58 rows=10 width=20) (actual time=19.909..21.018 rows=14 loops=1)
+         Workers Planned: 2
+         Workers Launched: 2
+         Buffers: shared hit=10317
+         ->  Sort  (cost=15435.39..15435.40 rows=5 width=20) (actual time=18.076..18.077 rows=5 loops=3)
+               Sort Key: event_ts DESC, event_id DESC
+               Sort Method: quicksort  Memory: 25kB
+               Buffers: shared hit=10317
+               Worker 0:  Sort Method: quicksort  Memory: 25kB
+               Worker 1:  Sort Method: quicksort  Memory: 25kB
+               ->  Parallel Seq Scan on events_baseline_1m  (cost=0.00..15435.33 rows=5 width=20) (actual time=0.783..18.035 rows=5 loops=3)
+                     Filter: (customer_id = 66808)
+                     Rows Removed by Filter: 333329
+                     Buffers: shared hit=10227
+ Planning:
+   Buffers: shared hit=25
+ Planning Time: 0.144 ms
+ Execution Time: 21.029 ms
+(20 rows)
+
+=== 1M BASELINE: RUN 1 ===
+                                                                 QUERY PLAN                                                                  
+---------------------------------------------------------------------------------------------------------------------------------------------
+ Limit  (cost=16435.42..16436.58 rows=10 width=20) (actual time=15.032..16.096 rows=14 loops=1)
+   Buffers: shared hit=10317
+   ->  Gather Merge  (cost=16435.42..16436.58 rows=10 width=20) (actual time=15.031..16.094 rows=14 loops=1)
+         Workers Planned: 2
+         Workers Launched: 2
+         Buffers: shared hit=10317
+         ->  Sort  (cost=15435.39..15435.40 rows=5 width=20) (actual time=13.725..13.725 rows=5 loops=3)
+               Sort Key: event_ts DESC, event_id DESC
+               Sort Method: quicksort  Memory: 25kB
+               Buffers: shared hit=10317
+               Worker 0:  Sort Method: quicksort  Memory: 25kB
+               Worker 1:  Sort Method: quicksort  Memory: 25kB
+               ->  Parallel Seq Scan on events_baseline_1m  (cost=0.00..15435.33 rows=5 width=20) (actual time=0.418..13.693 rows=5 loops=3)
+                     Filter: (customer_id = 66808)
+                     Rows Removed by Filter: 333329
+                     Buffers: shared hit=10227
+ Planning Time: 0.037 ms
+ Execution Time: 16.103 ms
+(18 rows)
+
+=== 1M BASELINE: RUN 2 ===
+                                                                 QUERY PLAN                                                                  
+---------------------------------------------------------------------------------------------------------------------------------------------
+ Limit  (cost=16435.42..16436.58 rows=10 width=20) (actual time=12.546..13.647 rows=14 loops=1)
+   Buffers: shared hit=10317
+   ->  Gather Merge  (cost=16435.42..16436.58 rows=10 width=20) (actual time=12.546..13.646 rows=14 loops=1)
+         Workers Planned: 2
+         Workers Launched: 2
+         Buffers: shared hit=10317
+         ->  Sort  (cost=15435.39..15435.40 rows=5 width=20) (actual time=11.444..11.444 rows=5 loops=3)
+               Sort Key: event_ts DESC, event_id DESC
+               Sort Method: quicksort  Memory: 25kB
+               Buffers: shared hit=10317
+               Worker 0:  Sort Method: quicksort  Memory: 25kB
+               Worker 1:  Sort Method: quicksort  Memory: 25kB
+               ->  Parallel Seq Scan on events_baseline_1m  (cost=0.00..15435.33 rows=5 width=20) (actual time=0.353..11.418 rows=5 loops=3)
+                     Filter: (customer_id = 66808)
+                     Rows Removed by Filter: 333329
+                     Buffers: shared hit=10227
+ Planning Time: 0.033 ms
+ Execution Time: 13.653 ms
+(18 rows)
+
+=== 1M BASELINE: RUN 3 ===
+                                                                 QUERY PLAN                                                                  
+---------------------------------------------------------------------------------------------------------------------------------------------
+ Limit  (cost=16435.42..16436.58 rows=10 width=20) (actual time=11.014..11.818 rows=14 loops=1)
+   Buffers: shared hit=10317
+   ->  Gather Merge  (cost=16435.42..16436.58 rows=10 width=20) (actual time=11.013..11.817 rows=14 loops=1)
+         Workers Planned: 2
+         Workers Launched: 2
+         Buffers: shared hit=10317
+         ->  Sort  (cost=15435.39..15435.40 rows=5 width=20) (actual time=10.044..10.044 rows=5 loops=3)
+               Sort Key: event_ts DESC, event_id DESC
+               Sort Method: quicksort  Memory: 25kB
+               Buffers: shared hit=10317
+               Worker 0:  Sort Method: quicksort  Memory: 25kB
+               Worker 1:  Sort Method: quicksort  Memory: 25kB
+               ->  Parallel Seq Scan on events_baseline_1m  (cost=0.00..15435.33 rows=5 width=20) (actual time=0.376..10.025 rows=5 loops=3)
+                     Filter: (customer_id = 66808)
+                     Rows Removed by Filter: 333329
+                     Buffers: shared hit=10227
+ Planning Time: 0.026 ms
+ Execution Time: 11.826 ms
+(18 rows)
+

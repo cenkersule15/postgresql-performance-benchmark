@@ -1,0 +1,6 @@
+        index_name         | index_size 
+---------------------------+------------
+ events_pkey               | 21 MB
+ idx_events_customer_ts_id | 39 MB
+(2 rows)
+

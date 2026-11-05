@@ -1,0 +1,27 @@
+services:
+  db:
+    image: postgres:14
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: local_demo_only
+      POSTGRES_DB: bigdata_lab
+      PGUSER: postgres
+      PGDATABASE: bigdata_lab
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - .:/work
+    working_dir: /work
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d bigdata_lab"]
+      interval: 2s
+      timeout: 5s
+      retries: 30
+  generator:
+    image: python:3.12-slim
+    profiles: ["tools"]
+    working_dir: /work
+    volumes:
+      - .:/work
+    entrypoint: ["python", "generate_events.py"]
+volumes:
+  pgdata:

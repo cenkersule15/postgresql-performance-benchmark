@@ -1,0 +1,3 @@
+Timing is on.
+COPY 100000
+Time: 213.980 ms

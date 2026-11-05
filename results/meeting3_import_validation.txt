@@ -1,0 +1,7 @@
+     test_case      | row_count 
+--------------------+-----------
+ no_extra_indexes   |    100000
+ with_extra_indexes |    100000
+ original_events    |   1000000
+(3 rows)
+

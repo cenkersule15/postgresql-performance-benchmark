@@ -1,0 +1,4 @@
+data/events.csv,6147339 bytes
+data/events.jsonl,17547257 bytes
+data/full_1m/events.csv,62479517 bytes
+data/full_1m/events.jsonl,176479435 bytes

@@ -1,0 +1,12 @@
+              name               | setting | unit |       source       
+---------------------------------+---------+------+--------------------
+ effective_cache_size            | 524288  | 8kB  | default
+ effective_io_concurrency        | 0       |      | default
+ maintenance_work_mem            | 65536   | kB   | default
+ max_parallel_workers_per_gather | 2       |      | default
+ random_page_cost                | 4       |      | default
+ shared_buffers                  | 16384   | 8kB  | configuration file
+ synchronous_commit              | on      |      | default
+ work_mem                        | 4096    | kB   | default
+(8 rows)
+
